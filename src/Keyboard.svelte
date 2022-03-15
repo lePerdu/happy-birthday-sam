@@ -14,8 +14,8 @@
   };
 
   const specialKeys = {
-    Enter: "\u23ce",
-    Backspace: "\u232b",
+    Enter: "ENTER",
+    Backspace: "DEL",
   };
 
   const isSpecialKey = (key: string): boolean => key in specialKeys;
@@ -56,6 +56,7 @@
     align-items: stretch;
 
     max-width: var(--keyboard-max-width);
+    font-family: var(--game-font-family);
     font-weight: bolder;
   }
 
@@ -69,9 +70,15 @@
     flex: 1;
     height: var(--keyboard-key-height);
 
-    background: lightgray;
+    cursor: pointer;
+    user-select: none;
+
+    background: var(--keyboard-key-background);
     margin-bottom: 0; /* Undo button styling */
-    border: none;
+    box-shadow: none;
+    outline: none;
+    border-width: 0px;
+    border-radius: var(--border-radius);
     padding: 0;
   }
 
@@ -93,14 +100,14 @@
   }
 
   .key.correct {
-    background: var(--letter-correct);
+    background: var(--letter-correct-color);
   }
 
   .key.in-word {
-    background: var(--letter-in-word);
+    background: var(--letter-in-word-color);
   }
 
   .key.not-in-word {
-    background: var(--letter-not-in-word);
+    background: var(--letter-not-in-word-color);
   }
 </style>

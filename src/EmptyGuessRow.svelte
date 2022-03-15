@@ -6,7 +6,7 @@
 </script>
 
 <GuessRow>
-  {#each new Array(wordLength).fill(null) as _, index}
-    <LetterTile {index} />
+  {#each new Array(wordLength).fill(null) as _}
+    <LetterTile />
   {/each}
 </GuessRow>

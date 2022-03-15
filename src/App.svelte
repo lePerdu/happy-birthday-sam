@@ -1,30 +1,38 @@
 <script lang="ts">
-  import { onDestroy, onMount } from "svelte";
-
   import GameBoard from "./GameBoard.svelte";
   import Keyboard from "./Keyboard.svelte";
   import { CheckedGuess, checkGuess } from "./guess";
   import wordlist from "./wordlist.json";
   import { getKeyUsage } from "./keyboard";
+  import Modal from "./Modal.svelte";
+  import solutions from "./solutions.json";
 
-  const target = "GUESS";
   const maxGuesses = 6;
 
-  $: wordLength = target.length;
+  // All these are constant for a given page load
+  const solutionStartDate = new Date(solutions.startDate);
+  const dateDelta = Date.now() - solutionStartDate.getTime();
+  const solutionIndex =
+    Math.floor(dateDelta / 1000 / 3600 / 24) % solutions.solutions.length;
+  const currentSolution = solutions.solutions[solutionIndex];
+  const target = currentSolution.word;
+  const wordLength = target.length;
 
-  let gameFinished = false;
+  let gameState: "playing" | "won" | "lost" = "playing";
 
   let pastGuesses: CheckedGuess[] = [];
   let currentGuess = "";
 
   $: keyUsageInfo = getKeyUsage(pastGuesses);
 
+  let showModal = false;
+
   function handleSuccess() {
-    alert("Nice job!");
+    showModal = true;
   }
 
   function handleFailure() {
-    alert("Ran out of guesses");
+    showModal = true;
   }
 
   function validateGuess() {
@@ -48,12 +56,12 @@
 
     pastGuesses = [...pastGuesses, checkGuess(currentGuess, target)];
 
+    // Mark the game as over to block input, but don't trigger pop-ups until
+    // the guess reveal animation is over (handleGuessRevealed())
     if (currentGuess === target) {
-      gameFinished = true;
-      handleSuccess();
+      gameState = "won";
     } else if (pastGuesses.length === maxGuesses) {
-      gameFinished = true;
-      handleFailure();
+      gameState = "lost";
     }
 
     currentGuess = "";
@@ -63,7 +71,7 @@
    * Keydown handler for handling non-printable keys.
    */
   function handleKeydown(event: KeyboardEvent) {
-    if (gameFinished) {
+    if (gameState !== "playing") {
       return;
     }
 
@@ -73,6 +81,9 @@
     }
     switch (event.key) {
       case "Enter":
+        // Prevent from triggering last pressed button
+        event.preventDefault();
+
         handleSubmitGuess();
         break;
       case "Backspace":
@@ -93,14 +104,22 @@
     }
   }
 
-  onMount(() => {
-    window.addEventListener("keydown", handleKeydown);
-  });
-
-  onDestroy(() => {
-    window.removeEventListener("keydown", handleKeydown);
-  });
+  /**
+   * Show success/failure pop-ups when the last guess is reveled.
+   */
+  function handleGuessRevealed() {
+    switch (gameState) {
+      case "won":
+        handleSuccess();
+        break;
+      case "lost":
+        handleFailure();
+        break;
+    }
+  }
 </script>
+
+<svelte:window on:keydown={handleKeydown} />
 
 <header>
   <h1>Samdle</h1>
@@ -113,39 +132,50 @@
       {currentGuess}
       {pastGuesses}
       {maxGuesses}
-      gameActive={!gameFinished}
+      gameActive={gameState === "playing"}
+      on:reveled={handleGuessRevealed}
     />
   </div>
 
   <div class="keyboard-container">
     <Keyboard {keyUsageInfo} />
   </div>
+
+  {#if showModal}
+    <Modal on:close={() => (showModal = false)}>
+      <h2>
+        {#if gameState === "won"}
+          Congratulations!
+        {:else}
+          Better Luck Next Time!
+        {/if}
+      </h2>
+
+      <small
+        >Today's word is
+        <q class="todays-word">{target}</q>
+      </small>
+
+      <hr />
+
+      {#each currentSolution.message as part}
+        <p>{part}</p>
+      {/each}
+
+      <hr />
+
+      <small>Check back tomorrow for another word inspired by you.</small>
+    </Modal>
+  {/if}
 </main>
 
 <style>
-  :root {
-    font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
-    --primary: black;
-    --background: white;
-    --letter-spacing: 0.5rem;
-
-    --letter-unknown: transparent;
-    --letter-correct: green;
-    --letter-in-word: yellow;
-    --letter-not-in-word: darkgray;
-
-    --reveal-duration: 1s;
-    --reveal-stagger: calc(var(--reveal-duration) / 4);
-
-    --keyboard-max-width: 500px;
-    --keyboard-key-spacing: 0.25rem;
-    --keyboard-key-height: 3.625rem;
-  }
-
   header {
     display: flex;
     justify-content: center;
-    border-bottom: 1px solid var(--primary);
+    border-bottom: 1px solid var(--border-color);
+
+    font-family: var(--title-font-family);
   }
 
   header h1 {
@@ -171,5 +201,9 @@
   .keyboard-container {
     display: flex;
     justify-content: center;
+  }
+
+  q.todays-word {
+    font-weight: bold;
   }
 </style>
