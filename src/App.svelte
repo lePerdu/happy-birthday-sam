@@ -103,7 +103,7 @@
 </script>
 
 <header>
-  <h1>Totally Not Wordle</h1>
+  <h1>Samdle</h1>
 </header>
 
 <main>
