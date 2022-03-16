@@ -73,7 +73,6 @@
     align-items: center;
 
     border: 1px solid var(--border-color);
-    box-sizing: border-box;
 
     color: var(--letter-unknown-text);
     background-color: var(--letter-unknown);

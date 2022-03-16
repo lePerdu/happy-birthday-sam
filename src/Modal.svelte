@@ -16,35 +16,45 @@
 
 <svelte:window on:keydown={handleKeydown} />
 
-<div class="modal-background" on:click={handleClose} />
-
-<div class="modal" role="alert" aria-modal="true">
-  <button class="close-button" on:click={handleClose}>&#x2715;</button>
-  <slot />
+<div class="modal-container">
+  <div class="modal-backdrop" on:click={handleClose} />
+  <div class="modal" role="alert" aria-modal="true">
+    <button class="close-button" on:click={handleClose}>&#x2715;</button>
+    <slot />
+  </div>
 </div>
 
 <style>
-  .modal-background {
+  .modal-container {
     position: fixed;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
 
-    z-index: var(--modal-background-z-index);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    background-color: var(--modal-background-color);
-    opacity: var(--modal-background-opacity);
+    z-index: var(--modal-z-index);
+  }
+
+  .modal-backdrop {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    background-color: var(--background);
+    opacity: var(--modal-backdrop-opacity);
   }
 
   .modal {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    position: relative;
+    flex: 0 1 var(--modal-max-width);
 
-    z-index: var(--modal-z-index);
-
+    margin: var(--modal-margin);
     padding: var(--modal-padding);
     font-size: 1.5rem;
     text-align: center;
