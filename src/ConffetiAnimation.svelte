@@ -23,7 +23,8 @@
    */
   const density: number = 1 / 20;
 
-  const confettiCount = window.innerWidth * density;
+  // Use ceil() over floor() since more confetti is always better
+  const confettiCount = Math.ceil(window.innerWidth * density);
 
   const releaseDuration = 4;
 
