@@ -6,6 +6,7 @@
   import { getKeyUsage } from "./keyboard";
   import Modal from "./Modal.svelte";
   import solutions from "./solutions.json";
+  import ConffetiAnimation from "./ConffetiAnimation.svelte";
 
   const maxGuesses = 6;
 
@@ -152,6 +153,8 @@
   </div>
 
   {#if showModal}
+    <ConffetiAnimation />
+
     <Modal on:close={() => (showModal = false)}>
       <h2>
         {#if gameState === "won"}

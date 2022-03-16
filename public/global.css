@@ -19,9 +19,11 @@ body {
   --box-shadow: 0 4px 23px 0 rgba(0, 0, 0, 0.2);
 
   --modal-background-z-index: 1000;
+  --modal-z-index: 1001;
+  --confetti-z-index: 2000;
+
   --modal-background-color: var(--background);
   --modal-background-opacity: 0.8;
-  --modal-z-index: 1001;
   --modal-background: var(--background);
   --modal-padding: 2rem;
   --modal-close-button-inset: calc(var(--modal-padding) / 2);
