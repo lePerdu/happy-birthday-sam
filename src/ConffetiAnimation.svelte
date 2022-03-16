@@ -84,7 +84,9 @@
     height: 100%;
     width: 100%;
 
+    /* Render above everything, but pass-through clicks */
     z-index: var(--confetti-z-index);
+    pointer-events: none;
   }
 
   @keyframes confetti-float {
