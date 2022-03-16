@@ -10,8 +10,18 @@
   const maxGuesses = 6;
 
   // All these are constant for a given page load
-  const solutionStartDate = new Date(solutions.startDate);
-  const dateDelta = Date.now() - solutionStartDate.getTime();
+
+  // Constructs date at UTC
+  const solutionStartDate = new Date(solutions.startDate).getTime();
+  const today = new Date();
+  // Today's date in UTC
+  const todayUtc = Date.UTC(
+    today.getFullYear(),
+    today.getMonth(),
+    today.getDate()
+  );
+  const dateDelta = todayUtc - solutionStartDate;
+  // Convert ms to days and wrap the index to keep in the list
   const solutionIndex =
     Math.floor(dateDelta / 1000 / 3600 / 24) % solutions.solutions.length;
   const currentSolution = solutions.solutions[solutionIndex];
