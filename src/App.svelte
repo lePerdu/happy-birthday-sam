@@ -7,6 +7,7 @@
   import Modal from "./Modal.svelte";
   import solutions from "./solutions.json";
   import ConffetiAnimation from "./ConffetiAnimation.svelte";
+  import generateGuessSummary from "./guess-summary";
 
   const maxGuesses = 6;
 
@@ -23,8 +24,8 @@
   );
   const dateDelta = todayUtc - solutionStartDate;
   // Convert ms to days and wrap the index to keep in the list
-  const solutionIndex =
-    Math.floor(dateDelta / 1000 / 3600 / 24) % solutions.solutions.length;
+  const dayNumber = Math.floor(dateDelta / 1000 / 3600 / 24);
+  const solutionIndex = dayNumber % solutions.solutions.length;
   const currentSolution = solutions.solutions[solutionIndex];
   const target = currentSolution.word;
   const wordLength = target.length;
@@ -128,6 +129,25 @@
         break;
     }
   }
+
+  async function handleShare() {
+    const summary = generateGuessSummary(
+      pastGuesses,
+      maxGuesses,
+      dayNumber,
+      gameState === "won"
+    );
+    const shareData = { text: summary };
+    if (navigator.canShare && navigator.canShare(shareData)) {
+      await navigator.share(shareData);
+      console.log("Shared");
+    } else if (navigator.clipboard) {
+      await navigator.clipboard.writeText(summary);
+      console.log("Copied to clipboard");
+    } else {
+      console.log("Not shareable");
+    }
+  }
 </script>
 
 <svelte:window on:keydown={handleKeydown} />
@@ -177,7 +197,11 @@
 
       <hr />
 
-      <small>Check back tomorrow for another word inspired by you.</small>
+      <p>
+        <small>Check back tomorrow for another word inspired by you.</small>
+      </p>
+
+      <button class="share" on:click={handleShare}>Share</button>
     </Modal>
   {/if}
 </main>
@@ -218,5 +242,11 @@
 
   q.todays-word {
     font-weight: bold;
+  }
+
+  .info-share-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 </style>

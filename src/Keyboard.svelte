@@ -56,8 +56,6 @@
     align-items: stretch;
 
     max-width: var(--keyboard-max-width);
-    font-family: var(--game-font-family);
-    font-weight: bolder;
   }
 
   .keyboard-row {
@@ -66,7 +64,7 @@
     margin-bottom: var(--keyboard-key-spacing);
   }
 
-  .key {
+  button.key {
     flex: 1;
     height: var(--keyboard-key-height);
 
@@ -80,6 +78,11 @@
     border-width: 0px;
     border-radius: var(--border-radius);
     padding: 0;
+
+    font-family: var(--game-font-family);
+    font-size: var(--keyboard-font-size);
+    font-weight: bolder;
+    color: var(--keyboard-key-text);
   }
 
   .key:not(:last-child) {
