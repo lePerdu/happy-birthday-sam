@@ -1,8 +1,5 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
-
-  import { linear } from "svelte/easing";
-  import { TransitionConfig } from "svelte/transition";
   import { Correctness } from "./guess";
 
   export let correctness: Correctness | undefined = undefined;
@@ -30,28 +27,6 @@
         // collect by itself?
       }
     }
-  }
-
-  function flipReveal(
-    node: HTMLElement,
-    params: { index: number }
-  ): TransitionConfig {
-    const styles = getComputedStyle(node);
-    return {
-      delay: params.index * 250,
-      duration: 1000,
-      easing: linear,
-      css: (t, u) => {
-        const backgroundColor =
-          t < 0.5 ? "var(--letter-unknown)" : "var(--letter-revealed-color)";
-        const angle = 180 * Math.min(t, u);
-        const rotation = `rotateX(${angle}deg)`;
-        return `
-          background-color: ${backgroundColor};
-          transform: ${rotation};
-        `;
-      },
-    };
   }
 </script>
 

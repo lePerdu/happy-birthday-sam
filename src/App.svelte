@@ -243,10 +243,4 @@
   q.todays-word {
     font-weight: bold;
   }
-
-  .info-share-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
 </style>
