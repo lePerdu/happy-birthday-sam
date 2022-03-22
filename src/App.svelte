@@ -1,49 +1,23 @@
 <script lang="ts">
-  import GameBoard from "./GameBoard.svelte";
-  import Keyboard from "./Keyboard.svelte";
-  import { CheckedGuess, checkGuess } from "./guess";
-  import wordlist from "./wordlist.json";
-  import { getKeyUsage } from "./keyboard";
-  import Modal from "./Modal.svelte";
-  import solutions from "./solutions.json";
   import ConffetiAnimation from "./ConffetiAnimation.svelte";
+  import GameBoard from "./GameBoard.svelte";
   import generateGuessSummary from "./guess-summary";
+  import { getKeyUsage } from "./keyboard";
+  import Keyboard from "./Keyboard.svelte";
+  import Modal from "./Modal.svelte";
+  import { gameState, playState } from "./store";
+  import wordlist from "./wordlist.json";
 
-  const maxGuesses = 6;
+  $: wordLength = $gameState.config.solution.word.length;
+  $: solution = $gameState.config.solution;
 
-  // All these are constant for a given page load
-
-  // Constructs date at UTC
-  const solutionStartDate = new Date(solutions.startDate).getTime();
-  const today = new Date();
-  // Today's date in UTC
-  const todayUtc = Date.UTC(
-    today.getFullYear(),
-    today.getMonth(),
-    today.getDate()
-  );
-  const dateDelta = todayUtc - solutionStartDate;
-  // Convert ms to days and wrap the index to keep in the list
-  const dayNumber = Math.floor(dateDelta / 1000 / 3600 / 24);
-  const solutionIndex = dayNumber % solutions.solutions.length;
-  const currentSolution = solutions.solutions[solutionIndex];
-  const target = currentSolution.word;
-  const wordLength = target.length;
-
-  let gameState: "playing" | "won" | "lost" = "playing";
-
-  let pastGuesses: CheckedGuess[] = [];
   let currentGuess = "";
 
-  $: keyUsageInfo = getKeyUsage(pastGuesses);
+  $: keyUsageInfo = getKeyUsage($gameState.guesses);
 
   let showModal = false;
 
-  function handleSuccess() {
-    showModal = true;
-  }
-
-  function handleFailure() {
+  function handleFinish() {
     showModal = true;
   }
 
@@ -66,16 +40,7 @@
       return;
     }
 
-    pastGuesses = [...pastGuesses, checkGuess(currentGuess, target)];
-
-    // Mark the game as over to block input, but don't trigger pop-ups until
-    // the guess reveal animation is over (handleGuessRevealed())
-    if (currentGuess === target) {
-      gameState = "won";
-    } else if (pastGuesses.length === maxGuesses) {
-      gameState = "lost";
-    }
-
+    gameState.submitGuess(currentGuess);
     currentGuess = "";
   }
 
@@ -83,7 +48,7 @@
    * Keydown handler for handling non-printable keys.
    */
   function handleKeydown(event: KeyboardEvent) {
-    if (gameState !== "playing") {
+    if ($playState !== "playing") {
       return;
     }
 
@@ -120,22 +85,20 @@
    * Show success/failure pop-ups when the last guess is reveled.
    */
   function handleGuessRevealed() {
-    switch (gameState) {
+    switch ($playState) {
       case "won":
-        handleSuccess();
-        break;
       case "lost":
-        handleFailure();
+        handleFinish();
         break;
     }
   }
 
   async function handleShare() {
     const summary = generateGuessSummary(
-      pastGuesses,
-      maxGuesses,
-      dayNumber,
-      gameState === "won"
+      $gameState.guesses,
+      $gameState.config.maxGuesses,
+      $gameState.config.dayNumber,
+      $playState === "won"
     );
     const shareData = { text: summary };
     if (navigator.canShare && navigator.canShare(shareData)) {
@@ -161,9 +124,9 @@
     <GameBoard
       {wordLength}
       {currentGuess}
-      {pastGuesses}
-      {maxGuesses}
-      gameActive={gameState === "playing"}
+      pastGuesses={$gameState.guesses}
+      maxGuesses={$gameState.config.maxGuesses}
+      gameActive={$playState === "playing"}
       on:reveled={handleGuessRevealed}
     />
   </div>
@@ -177,7 +140,7 @@
 
     <Modal on:close={() => (showModal = false)}>
       <h2>
-        {#if gameState === "won"}
+        {#if $playState === "won"}
           Congratulations!
         {:else}
           Better Luck Next Time!
@@ -186,12 +149,12 @@
 
       <small
         >Today's word is
-        <q class="todays-word">{target}</q>
+        <q class="todays-word">{solution.word}</q>
       </small>
 
       <hr />
 
-      {#each currentSolution.message as part}
+      {#each solution.message as part}
         <p>{part}</p>
       {/each}
 
