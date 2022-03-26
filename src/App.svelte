@@ -147,16 +147,22 @@
         {/if}
       </h2>
 
-      <small
-        >Today's word is
-        <q class="todays-word">{solution.word}</q>
-      </small>
+      {#if $playState === "won"}
+        <small>
+          Today's word is
+          <q class="todays-word">{solution.word}</q>
+        </small>
 
-      <hr />
+        <hr />
 
-      {#each solution.message as part}
-        <p>{part}</p>
-      {/each}
+        {#each solution.message as part}
+          <p>{part}</p>
+        {/each}
+      {:else}
+        <small>
+          I still love you, even if you couldn't guess today's word 🙂
+        </small>
+      {/if}
 
       <hr />
 
