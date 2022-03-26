@@ -15,7 +15,13 @@
 
   const dispatch = createEventDispatcher<{ reveled: CheckedGuess }>();
 
-  $: remainingGuesses = Math.max(maxGuesses - pastGuesses.length - 1, 0);
+  let remainingGuesses: number;
+  $: {
+    const baseRemainingGuesses = maxGuesses - pastGuesses.length;
+    // Remove a remaining guess if the game is active, since there is also a
+    // current guess in that case
+    remainingGuesses = Math.max(baseRemainingGuesses - (gameActive ? 1 : 0), 0);
+  }
 
   // Blank strings to fill the rest of the tiles in the current row with
   let currentGuessLetters: string[];
@@ -41,9 +47,8 @@
     <CheckedGuessRow {guess} on:revealed={() => handleGuessRevealed(guess)} />
   {/each}
 
-  <!-- Don't show the current guess if over (only applicable if solved on the
-  last guess)-->
-  {#if gameActive || remainingGuesses > 0}
+  <!-- Don't show the current guess if over -->
+  {#if gameActive}
     <GuessRow>
       {#each currentGuessLetters as letter, index}
         <LetterTile {index}>
