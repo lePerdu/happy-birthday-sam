@@ -5,6 +5,7 @@ import {
   makePlayStateStore,
 } from "./game-state";
 import solutions from "./solutions.json";
+import * as validate from "./validate";
 
 const MS_PER_DAY = 1000 * 3600 * 24;
 
@@ -37,10 +38,37 @@ export const config: GameConfig = {
 
 const GAME_STATE_KEY = "samdle-game-state";
 
+// Validators for making sure the data in localStorage is in the expected format
+
+const gameConfigValidator: validate.Validator<GameConfig> = validate.object({
+  maxGuesses: validate.number({ integer: true }),
+  dayNumber: validate.number({ integer: true }),
+  solution: validate.object({
+    word: validate.string(),
+    message: validate.array(validate.string()),
+  }),
+});
+
+const gameStateValidator: validate.Validator<GameState> = validate.object({
+  config: gameConfigValidator,
+  guesses: validate.array(
+    validate.array(
+      validate.object({
+        correctness: validate.oneOf(["correct", "inWord", "notInWord"]),
+        letter: validate.string({ minLength: 1, maxLength: 1 }),
+      })
+    )
+  ),
+});
+
 function retrieveGameState(): GameState | undefined {
   try {
-    // TODO Schema validation
-    return JSON.parse(localStorage.getItem(GAME_STATE_KEY));
+    const state = JSON.parse(localStorage.getItem(GAME_STATE_KEY));
+    if (gameStateValidator(state)) {
+      return state;
+    } else {
+      console.log("Ignoring invalid/old game state", state);
+    }
   } catch (e) {
     return undefined;
   }
@@ -62,20 +90,3 @@ export const gameState = makeGameStateStore(config, (set) => {
 gameState.subscribe(storeGameState);
 
 export const playState = makePlayStateStore(config, gameState);
-
-/**
- * When returning to the application and it's a new day, refresh the page to
- * reset the game state and fetch potential updates.
- *
- * TODO Soft reset the state and check for updates asynchronously to avoid
- * unnecessary refreshes.
- */
-function handleVisibilityChange() {
-  if (document.visibilityState === "visible") {
-    if (calcDayNumber() !== dayNumber) {
-      location.reload();
-    }
-  }
-}
-
-window.addEventListener("visibilitychange", handleVisibilityChange);
