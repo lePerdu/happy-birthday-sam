@@ -88,6 +88,12 @@
       ]
     },
     {
+      "word": "LIGHT",
+      "message": [
+        "💡 Remember to get a new headlight for your car"
+      ]
+    },
+    {
       "word": "DREAM",
       "message": [
         "I couldn't have dreamt of meeting someone as wonderful as you, Sam",
@@ -97,8 +103,8 @@
     {
       "word": "TOMMY",
       "message": [
-        "Tommy Boy, your favorite movie! 🤣",
-        "\"You can get a good look at a butcher's ass by sticking your head up there. But, wouldn't you rather to take his word for it?\""
+        "<i>Tommy Boy</i>, your favorite movie! 🤣",
+        "<q>You can get a good look at a butcher's ass by sticking your head up there. But, wouldn't you rather take his word for it?</q>"
       ]
     },
     {
@@ -112,7 +118,7 @@
       "word": "GREAT",
       "message": [
         "Great personality, great looks, great memories, ...",
-        "You're great all around 🤗"
+        "You're great all around 🤩"
       ]
     },
     {
@@ -122,9 +128,33 @@
         "Remembering all the great times we've had together",
         "And imagining the even greater ones to come"
       ]
+    },
+    {
+      "word": "CORPS",
+      "message": [
+        "Approche toi de moi",
+        "Monte le son plus fort",
+        "Je veux sentir <s>une dernière fois</s> encore une fois ton corps contre moi"
+      ]
     }
   ],
   "futureSolutions": [
+    {
+      "__comment": "For the day Sam is driving to Orlando: Thurs April 7",
+      "word": "DRIVE",
+      "message": [
+        "Have a safe drive, my love 🏎",
+        "I'm so excited to be in your arms again 🤗"
+      ]
+    },
+    {
+      "__comment": "For when I go to visit Sam, eventually",
+      "word": "VISIT",
+      "message": [
+        "I am so looking forward to visiting you again",
+        "See you soon, my sweetheart 😘"
+      ]
+    },
     {
       "__comment": "Try to put on April 25, Samdle 41",
       "word": "SEVEN",

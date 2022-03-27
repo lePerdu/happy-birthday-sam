@@ -156,7 +156,7 @@
         <hr />
 
         {#each solution.message as part}
-          <p>{part}</p>
+          <p>{@html part}</p>
         {/each}
       {:else}
         <small>
