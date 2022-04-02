@@ -137,6 +137,13 @@
       ]
     },
     {
+      "word": "FIRST",
+      "message": [
+        "You've been my first (😉) for quite a few things",
+        "Thank you for showing me so many new experiences 😙"
+      ]
+    },
+    {
       "word": "CORPS",
       "message": [
         "Approche toi de moi",
@@ -145,14 +152,13 @@
       ]
     },
     {
-      "word": "FIRST",
+      "word": "FLIRT",
       "message": [
-        "You've been my first (😉) for quite a few things",
-        "Thank you for showing me so many new experiences 😙"
+        "I never want to stop flirting with you 😘",
+        "No matter how long we've been together",
+        "The subtle winks and suggestive comments never get old"
       ]
-    }
-  ],
-  "futureSolutions": [
+    },
     {
       "__comment": "For the day Sam is driving to Orlando: Thurs April 7",
       "word": "DRIVE",
@@ -161,6 +167,16 @@
         "I'm so excited to be in your arms again 🤗"
       ]
     },
+    {
+      "word": "SHINE",
+      "message": [
+        "Your soft skin shines in the sun",
+        "Your bright spirit shines in all weather",
+        "(And thank you for the sexy Shinesty undergarments, both of ours)"
+      ]
+    }
+  ],
+  "futureSolutions": [
     {
       "__comment": "For when I go to visit Sam, eventually",
       "word": "VISIT",
@@ -176,6 +192,13 @@
         "It's been seven months since we've been together",
         "These seven months have been the best in my life, without a doubt",
         "Looking forward to many more 💖"
+      ]
+    },
+    {
+      "__comment": "For the 69th one, if it get that far lol",
+      "word": "SIXTY",
+      "message": [
+        "-Nine 😉"
       ]
     }
   ]
