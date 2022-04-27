@@ -267,22 +267,26 @@
         "I'm going on a plane today for our trip 🛫",
         "See you in NOLA 📿"
       ]
-    }
-  ],
-  "futureSolutions": [
+    },
     {
-      "__comment": "For when I go to visit Sam, eventually",
-      "word": "VISIT",
+      "word": "CHESS",
       "message": [
-        "I am so looking forward to visiting you again",
-        "See you soon, my sweetheart 😘"
+        "Thank you for playing chess with me",
+        "And making me play with the NOLA people ;)"
+      ]
+    },
+    {
+      "word": "GOOSE",
+      "message": [
+        "I really enjoy giving you goose bumps ;)",
+        "(But not when the cold gives them to you; try and keep warm)"
       ]
     },
     {
       "__comment": "When leaving each other again",
       "word": "DONUT",
       "message": [
-        "The feeling when you say \"goodbye\"...",
+        "The feeling when you say <q>goodbye</q>...",
         "Hurts Donut? 🍩"
       ]
     },
@@ -293,6 +297,50 @@
         "It's been seven months since we've been together",
         "These seven months have been the best in my life, without a doubt",
         "Looking forward to many more 💖"
+      ]
+    },
+    {
+      "word": "TRIPS",
+      "message": [
+        "I very much enjoy going on trips with you!",
+        "Hopefully one of these international ones will happen soon 🛫"
+      ]
+    },
+    {
+      "word": "SEMEN",
+      "message": [
+        "You wanted this one the other day",
+        "So I'm gonna give it to you 😏"
+      ]
+    },
+    {
+      "word": "DRINK",
+      "message": [
+        "Remember to drink plenty of water 💧"
+      ]
+    },
+    {
+      "word": "WATER",
+      "message": [
+        "Still remember to drink plenty water 💧💧"
+      ]
+    },
+    {
+      "word": "MUSIC",
+      "message": [
+        "We've been sharing songs with each other for a while now",
+        "I always love getting another one from you 🎶",
+        "<a href=\"https://open.spotify.com/playlist/6ip4DTSzLAtUXx03Zs9y9j?si=e0b81c3797084b9f\">And I always love you 💞</a>"
+      ]
+    }
+  ],
+  "futureSolutions": [
+    {
+      "__comment": "For when I go to visit Sam, eventually",
+      "word": "VISIT",
+      "message": [
+        "I am so looking forward to visiting you again",
+        "See you soon, my sweetheart 😘"
       ]
     },
     {
