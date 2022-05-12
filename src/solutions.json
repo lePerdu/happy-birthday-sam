@@ -411,28 +411,63 @@
       ]
     },
     {
+      "word": "BOOKS",
+      "message": [
+        "Now that we've found out what happens in our books 📖",
+        "We can think how to cash in out winnings from the sexy bets 😏"
+      ]
+    },
+    {
+      "word": "SEXTS",
+      "message": [
+        "I've really enjoyed the last few super hot pics you've sent recently 🔥",
+        "Those boudoir photos capture your sexy perfectly"
+      ]
+    },
+    {
+      "word": "VISIT",
+      "message": [
+        "Today is the last long-distance visit after nearly 8 months!",
+        "See you soon, gorgeous 😍"
+      ]
+    },
+    {
       "word": "TOWEL",
       "message": [
         "I hope the towel whipping isn't too much",
         "It's all in a loving manner 😜",
         "(And always feel free to hit me back)"
       ]
+    },
+    {
+      "word": "BOXES",
+      "message": [
+        "It's packing-things-into-boxes week now 📦",
+        "So close to you moving to Orlando!"
+      ]
+    },
+    {
+      "word": "AMOUR",
+      "message": [
+        "Je t'aime, mon amour ❤"
+      ]
     }
   ],
   "futureSolutions": [
     {
-      "__comment": "For when I go to visit Sam, eventually",
-      "word": "VISIT",
-      "message": [
-        "I am so looking forward to visiting you again",
-        "See you soon, my sweetheart 😘"
-      ]
-    },
-    {
       "__comment": "For the 69th one, if it get that far lol",
       "word": "SIXTY",
       "message": [
-        "-Nine 😉"
+        "-Ninth Samdle is today 😉"
+      ]
+    },
+    {
+      "__comment": "For the final one (unfortunately has to end eventually)",
+      "word": "FINAL",
+      "message": [
+        "Unfortunately, this is the final Samdle 😥",
+        "There's only so many 5-letter words, so this was inevitable",
+        "But don't worry. I'll find other ways to get you these cute little phrases ❤"
       ]
     }
   ]
