@@ -451,16 +451,35 @@
       "message": [
         "Je t'aime, mon amour ❤"
       ]
-    }
-  ],
-  "futureSolutions": [
+    },
     {
-      "__comment": "For the 69th one, if it get that far lol",
+      "word": "SMILE",
+      "message": [
+        "I love your beautiful smile 😁",
+        "You being happy makes me happy ❤"
+      ]
+    },
+    {
+      "word": "BEACH",
+      "message": [
+        "Looking forward to going to the beach with you more in Orlando 🏖"
+      ]
+    },
+    {
+      "word": "ANGEL",
+      "message": [
+        "Did it hurt when you fell from heaven?"
+      ]
+    },
+    {
+      "__comment": "For the 69th one, if it gets that far lol",
       "word": "SIXTY",
       "message": [
         "-Ninth Samdle is today 😉"
       ]
-    },
+    }
+  ],
+  "futureSolutions": [
     {
       "__comment": "For the final one (unfortunately has to end eventually)",
       "word": "FINAL",
