@@ -518,6 +518,27 @@
         "This whole gas ordeal has forced you to burp around me",
         "I'm not turned off at all by it, so give me your best belches 😜"
       ]
+    },
+    {
+      "word": "PAINS",
+      "message": [
+        "You've been in so much pain the past week 😢",
+        "I really hope it's on the tail end and you feel better soon"
+      ]
+    },
+    {
+      "word": "SLEEP",
+      "message": [
+        "Get plenty of sleep, my dear 😴",
+        "You'll feel better soon"
+      ]
+    },
+    {
+      "word": "SOOTH",
+      "message": [
+        "Let me know anything I can do to sooth your pain and discomfort",
+        "I'll be by your side to do so as best I can"
+      ]
     }
   ],
   "futureSolutions": [
