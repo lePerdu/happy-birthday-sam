@@ -623,9 +623,49 @@
         "I like your butt and I cannot lie",
         "And all the way down your thigh"
       ]
+    },
+    {
+      "word": "BLANK",
+      "message": []
+    },
+    {
+      "word": "SHOES",
+      "message": [
+        "I bet I can tell you where you got your shoes 👟",
+        "You got them at Ross"
+      ]
+    },
+    {
+      "word": "STICK",
+      "message": [
+        "You're doing great with the blood thinner sticks every day, sweetie",
+        "Just 10 more left! 💉"
+      ]
+    },
+    {
+      "word": "OPPAI",
+      "message": [
+        "おっぱい",
+        "🍈🍈"
+      ]
+    },
+    {
+      "word": "SHAKE",
+      "message": [
+        "I love our secret handshake",
+        "🤲🫱🫲🫳🫴"
+      ]
     }
   ],
   "futureSolutions": [
+    {
+      "__comment": "When blood thinner is finished: Friday 24 June",
+      "word": "THICK",
+      "message": [
+        "We're done with the blood thinner!",
+        "You can have thick blood again! 🩸"
+      ]
+    },
     {
       "__comment": "For the final one (unfortunately has to end eventually)",
       "word": "FINAL",
