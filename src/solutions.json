@@ -650,17 +650,31 @@
       ]
     },
     {
+      "word": "FANCY",
+      "message": [
+        "Your new job is so fancy 💎",
+        "They're lucky to have you working there"
+      ]
+    },
+    {
       "word": "SHAKE",
       "message": [
         "I love our secret handshake",
         "🤲🫱🫲🫳🫴"
+      ]
+    },
+    {
+      "word": "WALKS",
+      "message": [
+        "I enjoy going on walks together 🚶‍♀️🚶‍♂️",
+        "Getting sunlight, movement, and you all at once 🌞"
       ]
     }
   ],
   "futureSolutions": [
     {
       "__comment": "When blood thinner is finished: Friday 24 June",
-      "word": "THICK",
+      "word": "BLOOD",
       "message": [
         "We're done with the blood thinner!",
         "You can have thick blood again! 🩸"
