@@ -676,9 +676,35 @@
         "Even though we have different modes of shopping",
         "I still love going to the store with you 🏪"
       ]
-    }
-  ],
-  "futureSolutions": [
+    },
+    {
+      "word": "WORKS",
+      "message": [
+        "I'm glad your excited to go to work today, sweetheart!",
+        "It's great to see you getting back into your <q>normal</q> life activities 💆"
+      ]
+    },
+    {
+      "word": "JOKES",
+      "message": [
+        "Thank you for trading old and creating new (albeit pretty dumb) jokes with me",
+        "I love that we share some sense of humor 😆"
+      ]
+    },
+    {
+      "word": "TOURS",
+      "message": [
+        "I'm really excited to tour some houses/apartments with you 🏡"
+      ]
+    },
+    {
+      "word": "APPLE",
+      "message": [
+        "Do you like apples?",
+        "Well, I got her number",
+        "How do like <em>them</em> apples? 🍎"
+      ]
+    },
     {
       "__comment": "When blood thinner is finished: Friday 24 June",
       "word": "BLOOD",
@@ -686,7 +712,9 @@
         "We're done with the blood thinner!",
         "You can have thick blood again! 🩸"
       ]
-    },
+    }
+  ],
+  "futureSolutions": [
     {
       "__comment": "For the final one (unfortunately has to end eventually)",
       "word": "FINAL",
